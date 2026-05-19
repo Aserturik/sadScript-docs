@@ -1,0 +1,61 @@
+---
+interface Props {
+  image: string;
+  alt: string;
+  code: string;
+  label: string;
+  quote: string;
+}
+
+const { image, alt, code, label, quote } = Astro.props;
+
+// Simple syntax highlighter for SadScript
+function highlight(raw: string): string {
+  const keywords = [
+    'si_duele', 'si_no_duele', 'si_no_duele_pero', 'mientras_duela',
+    'para_que_duela', 'aunque_no_quiera', 'cortarme', 'seguir_fingiendo',
+    'ritual', 'regresar_a_llorar', 'confesar', 'intentar_sentir',
+    'romperse', 'colapsar', 'afirmar', 'segun_mi_animo', 'caso',
+    'por_defecto_mio', 'vivo', 'muerto', 'nulo',
+    'sum', 'prod', 'max', 'min', 'prom',
+  ];
+  const types = ['dolor', 'vacio', 'esperanza', 'recuerdo', 'cicatriz', 'trauma'];
+
+  let result = raw;
+
+  // Escape HTML first
+  result = result.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  // Comments (// ...)
+  result = result.replace(/(\/\/.*)/g, '<span class="comment">$1</span>');
+
+  // Strings ("...")
+  result = result.replace(/("([^"]*)")/g, '<span class="string">$1</span>');
+
+  // Numbers
+  result = result.replace(/\b(\d+\.?\d*(?:e\d+)?)\b/g, '<span class="number">$1</span>');
+
+  // Keywords
+  for (const kw of keywords) {
+    const re = new RegExp(`\\b(${kw})\\b`, 'g');
+    result = result.replace(re, '<span class="keyword">$1</span>');
+  }
+
+  // Types
+  for (const t of types) {
+    const re = new RegExp(`\\b(${t})\\b`, 'g');
+    result = result.replace(re, '<span class="type">$1</span>');
+  }
+
+  return `<pre><code>${result}</code></pre>`;
+}
+---
+
+<div class="carousel-card">
+  <img src={image} alt={alt} />
+  <div class="card-overlay">
+    <div class="card-label">{label}</div>
+    <div class="card-code" set:html={highlight(code)}></div>
+    <div class="card-quote">{quote}</div>
+  </div>
+</div>

@@ -6,19 +6,23 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'SadScript',
+			description: 'Lenguaje de programación temático emo con sintaxis en español',
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/tu-usuario/sadScript' },
+			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Guía',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Introducción', slug: 'guides/sadscript' },
 					],
 				},
 				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
+					label: 'Referencia',
+					items: [
+						{ label: 'Glosario de Keywords', slug: 'reference/example' },
+					],
 				},
 			],
 		}),
