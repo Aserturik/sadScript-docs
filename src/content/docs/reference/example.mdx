@@ -3,9 +3,7 @@ title: Glosario de Keywords
 description: Mapeo completo entre el vocabulario emo de SadScript y los tokens internos del parser
 ---
 
-import SadCodeBlock from "../../components/SadCodeBlock.astro";
-
-# Glosario de Keywords
+import SadCodeBlock from "../../../components/SadCodeBlock.astro";
 
 La tabla completa de mapeo entre el vocabulario emo visible y los tokens internos del parser:
 
@@ -57,16 +55,36 @@ La tabla completa de mapeo entre el vocabulario emo visible y los tokens interno
 
 ## Literales y valores
 
-<SadCodeBlock code={`vivo      // true
-muerto    // false
-nulo      // null
-'a'       // caracter
-"texto"   // cadena
-42        // entero
-3.14      // flotante
-1.5e10    // notación científica`}/>
+| SadScript | Token interno      | Tipo                |
+| --------- | ------------------ | ------------------- |
+| `vivo`    | `TRUE`             | Booleano verdadero  |
+| `muerto`  | `FALSE`            | Booleano falso      |
+| `nulo`    | `NULO`             | Valor nulo          |
+| `"texto"` | `LITERAL_CADENA`   | Cadena de texto     |
+| `'a'`     | `LITERAL_CARACTER` | Carácter individual |
+| `42`      | `LITERAL_ENTERO`   | Número entero       |
+| `3.14`    | `LITERAL_DECIMAL`  | Número flotante     |
+| `1.5e10`  | `LITERAL_DECIMAL`  | Notación científica |
+
+<SadCodeBlock
+  code={`esperanza x = vivo      // true
+esperanza x = muerto    // false
+nulo                    // null
+recuerdo x = "texto"    // cadena
+dolor x = 'a'           // caracter
+dolor x = 42            // entero
+vacio x = 3.14          // flotante
+vacio x = 1.5e10        // notación científica`}
+/>
 
 ## Break y Continue
 
-<SadCodeBlock code={`cortarme;              // break
-seguir_fingiendo;      // continue`}/>
+| SadScript          | Token interno | Descripción                    |
+| ------------------ | ------------- | ------------------------------ |
+| `cortarme`         | `BREAK`       | Sale del bucle actual          |
+| `seguir_fingiendo` | `CONTINUE`    | Salta a la siguiente iteración |
+
+<SadCodeBlock
+  code={`cortarme;              // break
+seguir_fingiendo;      // continue`}
+/>

@@ -1,12 +1,10 @@
 ---
-title: sadScript
+title: sadScript 💔
 description: Lenguaje de programación temático emo con sintaxis en español y corazón de compilador clásico (Flex + Bison)
 ---
 
 import SadCodeBlock from "../../../components/SadCodeBlock.astro";
 import SwitchCodeBlock from "../../../components/SwitchCodeBlock.astro";
-
-# SadScript 💔
 
 **SadScript** es un lenguaje de programación temático donde **cada palabra clave duele**. Está diseñado para sentirse triste, cansado y existencial por fuera, pero seguir siendo formalmente compilable por dentro.
 
@@ -117,23 +115,23 @@ Análisis léxico y sintáctico completado sin errores.
 
 ### Literales y valores
 
-```sadscript
-vivo      // true
-muerto    // false
-nulo      // null
-'a'       // caracter
-"texto"   // cadena
-42        // entero
-3.14      // flotante
-1.5e10    // notación científica
-```
+| Tipo de literal | Ejemplo | Token interno |
+| --------------- | ------- | ------------- |
+| Booleano true | `esperanza x = vivo` | `TRUE` |
+| Booleano false | `esperanza x = muerto` | `FALSE` |
+| Nulo | `nulo` | `NULO` |
+| Cadena | `recuerdo x = "texto"` | `LITERAL_CADENA` |
+| Caracter | `'a'` | `LITERAL_CARACTER` |
+| Entero | `dolor x = 42` | `LITERAL_ENTERO` |
+| Flotante | `vacio x = 3.14` | `LITERAL_DECIMAL` |
+| Notación científica | `vacio x = 1.5e10` (también `42e10`) | `LITERAL_DECIMAL` |
 
 ### Declaración de variables
 
 ```sadscript
 dolor edad = 20;
 vacio promedio = 3.14;
-esperanza vivo = vivo;
+esperanza seguir_vivo = vivo;
 recuerdo msg = "hola mundo";
 cicatriz nums = [1, 2, 3, 4];
 trauma mat = [[1.2, 3.4], [5.6, 7.8]];
@@ -198,6 +196,15 @@ Puedes usar ambas formas:
 si_duele (edad > 18 && vivo) { ... }
 si_duele (edad > 18 y vivo) { ... }
 ```
+
+#### Operadores especiales
+
+| Operador | Token interno     | Uso típico                |
+| -------- | ----------------- | ------------------------- |
+| `->`     | `FLECHA`          | Punteros / acceso         |
+| `=>`     | `FLECHA_DOBLE`    | Lambdas / mapeo           |
+| `#`      | `NUMERAL`         | Directivas / metadatos    |
+| `@`      | `ARROBA`          | Decoradores / anotaciones |
 
 #### Operadores de reducción
 
@@ -501,8 +508,8 @@ Código fuente (.sad)
 
 ### Lexer (`a_lexico.l`)
 
-- **243 líneas** de definiciones Flex
-- Reconoce ~50 tokens: palabras reservadas, operadores, literales, identificadores
+- **~195 líneas** de definiciones Flex
+- Reconoce **~78 tokens**: palabras reservadas, operadores, literales, identificadores, delimitadores
 - Soporta caracteres con acentos del español (`áéíóúüñÁÉÍÓÚÜÑ`)
 - Comentarios multilínea mediante estados Flex (`COMENTARIO_MULTI`)
 - Reporte de errores léxicos con línea y columna exacta
