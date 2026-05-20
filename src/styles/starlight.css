@@ -1,3 +1,67 @@
+.sl-markdown-content,
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #2a1236;
+  --sl-color-accent: #8a2be2;
+  --sl-color-accent-high: #ff66cc;
+
+  --sl-color-white: #f8f1ff;
+  --sl-color-gray-1: #f3e9ff;
+  --sl-color-gray-2: #d8c7ea;
+  --sl-color-gray-3: #b79bcc;
+  --sl-color-gray-4: #8f6fa7;
+  --sl-color-gray-5: #5b466b;
+  --sl-color-gray-6: #2a1236;
+  --sl-color-black: #0b0810;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+starlight-theme-select {
+  display: none !important;
+}
+
+:root[data-theme='light'] .page,
+:root[data-theme='light'] .main-frame,
+:root[data-theme='light'] .content-panel,
+:root[data-theme='light'] .sidebar,
+:root[data-theme='light'] .right-sidebar-container,
+:root[data-theme='light'] .right-sidebar,
+:root[data-theme='light'] .sl-markdown-content {
+  background:
+    radial-gradient(circle at top, rgba(138, 43, 226, 0.22), transparent 45%),
+    linear-gradient(180deg, #120818 0%, #07050b 100%);
+}
+
+.page,
+.main-frame,
+.content-panel,
+.sidebar,
+.right-sidebar-container,
+.right-sidebar,
+.sl-markdown-content {
+  background:
+    radial-gradient(circle at top, rgba(138, 43, 226, 0.16), transparent 45%),
+    linear-gradient(180deg, #120818 0%, #07050b 100%);
+}
+
+:root[data-theme='dark'] .page,
+:root[data-theme='dark'] .main-frame,
+:root[data-theme='dark'] .content-panel,
+:root[data-theme='dark'] .sidebar,
+:root[data-theme='dark'] .right-sidebar-container,
+:root[data-theme='dark'] .right-sidebar,
+:root[data-theme='dark'] .sl-markdown-content {
+  background:
+    radial-gradient(circle at top, rgba(138, 43, 226, 0.22), transparent 45%),
+    linear-gradient(180deg, #120818 0%, #07050b 100%);
+}
+
+.sl-markdown-content {
+  background-attachment: fixed;
+}
+
 .sadcode-block,
 .sadcode-block pre,
 .sadcode-block code,

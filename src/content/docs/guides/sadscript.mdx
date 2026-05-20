@@ -3,13 +3,12 @@ title: sadScript
 description: Lenguaje de programación temático emo con sintaxis en español y corazón de compilador clásico (Flex + Bison)
 ---
 
-import SadCodeBlock from "../../components/SadCodeBlock.astro";
-import SwitchCodeBlock from "../../components/SwitchCodeBlock.astro";
+import SadCodeBlock from "../../../components/SadCodeBlock.astro";
+import SwitchCodeBlock from "../../../components/SwitchCodeBlock.astro";
 
 # SadScript 💔
 
 **SadScript** es un lenguaje de programación temático donde **cada palabra clave duele**. Está diseñado para sentirse triste, cansado y existencial por fuera, pero seguir siendo formalmente compilable por dentro.
-
 
 <SadCodeBlock code={`dolor edad = 20;
 vacio promedio = 3.14;
@@ -17,7 +16,7 @@ esperanza seguir_vivo = vivo;
 recuerdo mensaje = "nadie me entiende";
 
 si_duele (edad > 18) {
-    confesar("ya soy adulto... qué triste");
+confesar("ya soy adulto... qué triste");
 }`}/>
 
 ## Filosofía
@@ -72,7 +71,7 @@ brew install flex bison
 ### Compilar
 
 ```bash
-git clone https://github.com/tu-usuario/sadScript.git
+git clone https://github.com/Aserturik/sadScript.git
 cd sadScript
 ./build.sh
 ```
