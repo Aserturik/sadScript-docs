@@ -3,153 +3,205 @@
 <style>
   .gallery-wrapper {
     margin-top: 2rem;
+    padding: 1.25rem;
+    border: 4px ridge #8a2be2;
+    background:
+      radial-gradient(circle at top, rgba(138, 43, 226, 0.22), transparent 45%),
+      linear-gradient(180deg, #100816 0%, #07050b 100%);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.06), 0 0 30px rgba(138, 43, 226, 0.2);
   }
   .gallery-title {
     text-align: center;
     font-size: 1.5rem;
-    color: #8a2be2;
-    margin-top: 2rem;
-    text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    color: #ff66cc;
+    margin-top: 0.75rem;
+    text-shadow: 0 0 8px rgba(255, 102, 204, 0.6), 0 0 16px rgba(138, 43, 226, 0.35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .gallery-subtitle {
     text-align: center;
-    color: #666;
+    color: #b6a7c8;
     font-size: 0.9rem;
-    margin-top: -1rem;
+    margin-top: -0.75rem;
+    font-family: "Courier New", monospace;
   }
-  .carousel {
+  :global(.grid) {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  :global(.grid.top) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  :global(.grid.bottom) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  :global(.grid) :global(.carousel-card) {
     display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 2rem 1rem;
-    scrollbar-width: thin;
-    scrollbar-color: #8a2be2 #1a1a2e;
-  }
-  .carousel::-webkit-scrollbar {
-    height: 6px;
-  }
-  .carousel::-webkit-scrollbar-track {
-    background: #1a1a2e;
-    border-radius: 3px;
-  }
-  .carousel::-webkit-scrollbar-thumb {
-    background: #8a2be2;
-    border-radius: 3px;
-  }
-  .carousel-card {
-    flex: 0 0 320px;
+    min-width: 0;
     height: 420px;
-    scroll-snap-align: center;
-    position: relative;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(255, 102, 204, 0.45);
+    background: #0c0810;
   }
-  .carousel-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+  :global(.grid) :global(.component-window),
+  :global(.grid) :global(.card-overlay) {
+    height: 100%;
   }
-  .carousel-card img {
+  :global(.grid) :global(.component-window) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(180deg, #1a1021 0%, #0b0810 100%);
+  }
+  :global(.grid) :global(.component-media) {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    border-bottom: 2px solid rgba(255, 102, 204, 0.35);
+    flex: 0 0 auto;
+  }
+  :global(.grid) :global(.component-media img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(40%) contrast(1.1) brightness(0.8);
-    transition: filter 0.4s ease, transform 0.4s ease;
+    filter: grayscale(35%) contrast(1.08) brightness(0.82) sepia(0.1);
+    transform: scale(1.02);
+    display: block;
   }
-  .carousel-card:hover img {
-    filter: grayscale(60%) contrast(1.2) brightness(0.3);
-    transform: scale(1.1);
-  }
-  .card-overlay {
+  :global(.grid) :global(.component-media)::after {
+    content: "";
     position: absolute;
     inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(7, 5, 11, 0.2) 50%, rgba(7, 5, 11, 0.72) 100%);
+  }
+  :global(.grid) :global(.window-chrome) {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.55rem;
+    background: linear-gradient(180deg, #d4d0c8 0%, #a9a39a 100%);
+    color: #1b0b1f;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-bottom: 2px solid #5c5470;
+    flex: 0 0 auto;
+  }
+  :global(.grid) :global(.window-light) {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.35);
+  }
+  :global(.grid) :global(.window-light.red) { background: #ff5f57; }
+  :global(.grid) :global(.window-light.yellow) { background: #febc2e; }
+  :global(.grid) :global(.window-light.green) { background: #28c840; }
+  :global(.grid) :global(.window-title) {
+    margin-left: auto;
+    color: #2a1236;
+  }
+  :global(.grid) :global(.card-overlay) {
+    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.2rem;
-    background: linear-gradient(
-      0deg,
-      rgba(10, 10, 25, 0.95) 0%,
-      rgba(10, 10, 25, 0.7) 50%,
-      transparent 100%
-    );
-    transition: background 0.4s ease;
+    justify-content: flex-start;
+    padding: 1.1rem 1.15rem 1.2rem;
+    background: linear-gradient(0deg, rgba(10, 10, 25, 0.98) 0%, rgba(10, 10, 25, 0.8) 60%, transparent 100%);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ff66cc #120818;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
-  .carousel-card:hover .card-overlay {
-    background: linear-gradient(
-      0deg,
-      rgba(10, 10, 25, 0.98) 0%,
-      rgba(10, 10, 25, 0.9) 60%,
-      rgba(10, 10, 25, 0.6) 100%
-    );
+  :global(.grid) :global(.card-overlay::-webkit-scrollbar) {
+    width: 6px;
   }
-  .card-quote {
-    color: #aaa;
-    font-style: italic;
-    font-size: 0.8rem;
-    text-align: center;
-    padding: 0.4rem 0;
-    border-top: 1px dashed #444;
-    margin-top: 0.8rem;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
+  :global(.grid) :global(.card-overlay::-webkit-scrollbar-track) {
+    background: #120818;
   }
-  .carousel-card:hover .card-quote {
-    opacity: 1;
+  :global(.grid) :global(.card-overlay::-webkit-scrollbar-thumb) {
+    background: linear-gradient(180deg, #ff66cc, #8a2be2);
+    border-radius: 6px;
   }
-  .card-code {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.3s ease 0.1s;
-  }
-  .carousel-card:hover .card-code {
-    max-height: 300px;
-    opacity: 1;
-  }
-  .card-code pre {
-    font-family: "Courier New", monospace;
-    font-size: 0.75rem;
-    line-height: 1.5;
-    color: #c8c8c8;
-    margin: 0;
-    white-space: pre-wrap;
-    word-break: break-all;
-  }
-  .card-code .keyword {
-    color: #ff69b4;
-    font-weight: bold;
-  }
-  .card-code .type {
-    color: #8a2be2;
-  }
-  .card-code .string {
-    color: #00ff7f;
-  }
-  .card-code .comment {
-    color: #666;
-    font-style: italic;
-  }
-  .card-code .number {
-    color: #ff6347;
-  }
-  .card-label {
-    color: #8a2be2;
+  :global(.grid) :global(.card-label) {
+    color: #ff66cc;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s;
+    margin-bottom: 0.4rem;
+    opacity: 0.9;
   }
-  .carousel-card:hover .card-label {
-    opacity: 1;
-    transform: translateY(0);
+  :global(.grid) :global(.card-title) {
+    margin: 0;
+    color: #fff;
+    font-size: 1.35rem;
+    text-shadow: 0 0 10px rgba(255, 102, 204, 0.35);
+  }
+  :global(.grid) :global(.card-subtitle) {
+    margin: 0.35rem 0 0.75rem;
+    color: #d0c3de;
+    font-size: 0.9rem;
+    font-family: "Courier New", monospace;
+  }
+  :global(.grid) :global(.chip-row) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+  :global(.grid) :global(.chip) {
+    padding: 0.2rem 0.45rem;
+    border: 1px solid rgba(255, 102, 204, 0.6);
+    background: rgba(18, 8, 24, 0.8);
+    color: #ffb3e6;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  :global(.grid) :global(.card-code) {
+    max-height: none;
+  }
+  :global(.grid) :global(.card-code pre) {
+    font-family: "Courier New", monospace;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: #c8c8c8;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  :global(.grid) :global(.card-code .keyword) { color: #ff69b4; font-weight: bold; }
+  :global(.grid) :global(.card-code .type) { color: #8a2be2; }
+  :global(.grid) :global(.card-code .string) { color: #00ff7f; }
+  :global(.grid) :global(.card-code .comment) { color: #666; font-style: italic; }
+  :global(.grid) :global(.card-code .number) { color: #ff6347; }
+  :global(.grid) :global(.card-quote) {
+    color: #aaa;
+    font-style: italic;
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 0.4rem 0 0;
+    border-top: 1px dashed #444;
+    margin-top: 0.6rem;
+    flex: 0 0 auto;
+  }
+  @media (max-width: 900px) {
+    :global(.grid.top),
+    :global(.grid.bottom) {
+      grid-template-columns: 1fr;
+    }
+    :global(.grid) :global(.carousel-card) {
+      height: 390px;
+    }
   }
 </style>
 
-<slot />
+<div class="gallery-wrapper">
+  <slot />
+</div>

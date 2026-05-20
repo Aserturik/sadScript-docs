@@ -1,0 +1,70 @@
+---
+---
+<style>
+  .switch-block {
+    border: 2px solid rgba(255, 102, 204, 0.45);
+    box-shadow: 0 0 18px rgba(138, 43, 226, 0.18);
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #1a1021 0%, #0b0810 100%);
+    font-family: "Courier New", monospace;
+  }
+  .switch-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.6rem;
+    background: linear-gradient(180deg, #d4d0c8 0%, #a9a39a 100%);
+    color: #2a1236;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.65rem;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .red { background: #ff5f57; }
+  .yellow { background: #febc2e; }
+  .green { background: #28c840; }
+  .title { margin-left: auto; }
+  pre {
+    margin: 0;
+    padding: 1rem 1.1rem 1.1rem;
+    color: #c8c8c8;
+    line-height: 1.55;
+    font-size: 0.78rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  code {
+    display: block;
+    white-space: pre;
+    tab-size: 4;
+  }
+  .brace { color: #d4d0c8; }
+  .punct { color: #d4d0c8; }
+  .keyword { color: #ff69b4; font-weight: 700; }
+  .string { color: #00ff7f; }
+  .number { color: #ff6347; }
+</style>
+
+<div class="switch-block">
+  <div class="switch-toolbar">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
+    <span class="title">switch.exe</span>
+  </div>
+  <pre><code><span class="keyword">segun_mi_animo</span><span class="punct"> (</span>edad<span class="punct">) </span><span class="brace">{</span>
+    <span class="keyword">caso</span> <span class="number">18</span><span class="punct">:</span>
+        <span class="keyword">confesar</span><span class="punct">(</span><span class="string">"ya casi"</span><span class="punct">);</span>
+        <span class="keyword">cortarme</span><span class="punct">;</span>
+    <span class="keyword">caso</span> <span class="number">21</span><span class="punct">:</span>
+        <span class="keyword">confesar</span><span class="punct">(</span><span class="string">"legalmente adulto"</span><span class="punct">);</span>
+        <span class="keyword">cortarme</span><span class="punct">;</span>
+    <span class="keyword">por_defecto_mio</span><span class="punct">:</span>
+        <span class="keyword">confesar</span><span class="punct">(</span><span class="string">"sin rumbo"</span><span class="punct">);</span>
+<span class="brace">}</span></code></pre>
+</div>

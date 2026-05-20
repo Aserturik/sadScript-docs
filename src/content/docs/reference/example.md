@@ -3,6 +3,8 @@ title: Glosario de Keywords
 description: Mapeo completo entre el vocabulario emo de SadScript y los tokens internos del parser
 ---
 
+import SadCodeBlock from "../../components/SadCodeBlock.astro";
+
 # Glosario de Keywords
 
 La tabla completa de mapeo entre el vocabulario emo visible y los tokens internos del parser:
@@ -55,20 +57,16 @@ La tabla completa de mapeo entre el vocabulario emo visible y los tokens interno
 
 ## Literales y valores
 
-```sadscript
-vivo      // true
+<SadCodeBlock code={`vivo      // true
 muerto    // false
 nulo      // null
 'a'       // caracter
 "texto"   // cadena
 42        // entero
 3.14      // flotante
-1.5e10    // notación científica
-```
+1.5e10    // notación científica`}/>
 
 ## Break y Continue
 
-```sadscript
-cortarme;              // break
-seguir_fingiendo;      // continue
-```
+<SadCodeBlock code={`cortarme;              // break
+seguir_fingiendo;      // continue`}/>

@@ -5,9 +5,13 @@ interface Props {
   code: string;
   label: string;
   quote: string;
+  title: string;
+  subtitle: string;
+  status: string;
+  chips: string[];
 }
 
-const { image, alt, code, label, quote } = Astro.props;
+const { image, alt, code, label, quote, title, subtitle, status, chips } = Astro.props;
 
 // Simple syntax highlighter for SadScript
 function highlight(raw: string): string {
@@ -51,11 +55,26 @@ function highlight(raw: string): string {
 }
 ---
 
-<div class="carousel-card">
-  <img src={image} alt={alt} />
-  <div class="card-overlay">
-    <div class="card-label">{label}</div>
-    <div class="card-code" set:html={highlight(code)}></div>
-    <div class="card-quote">{quote}</div>
+<article class="carousel-card">
+  <div class="component-window">
+    <div class="component-media">
+      <img src={image} alt={alt} />
+    </div>
+    <div class="window-chrome">
+      <span class="window-light red"></span>
+      <span class="window-light yellow"></span>
+      <span class="window-light green"></span>
+      <span class="window-title">{status}</span>
+    </div>
+    <div class="card-overlay">
+      <div class="card-label">{label}</div>
+      <h3 class="card-title">{title}</h3>
+      <p class="card-subtitle">{subtitle}</p>
+      <div class="chip-row" aria-label="component tags">
+        {chips.map((chip) => <span class="chip">{chip}</span>)}
+      </div>
+      <div class="card-code" set:html={highlight(code)}></div>
+      <div class="card-quote">{quote}</div>
+    </div>
   </div>
-</div>
+</article>

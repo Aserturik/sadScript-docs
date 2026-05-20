@@ -1,0 +1,95 @@
+.sadcode-block,
+.sadcode-block pre,
+.sadcode-block code,
+.expressive-code,
+pre,
+code {
+  font-family: "Courier New", monospace;
+}
+
+.sadcode-block,
+.expressive-code {
+  border: 2px solid rgba(255, 102, 204, 0.45);
+  box-shadow: 0 0 18px rgba(138, 43, 226, 0.18);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sadcode-block,
+.sadcode-block pre,
+.expressive-code pre {
+  background: linear-gradient(180deg, #1a1021 0%, #0b0810 100%);
+}
+
+.sadcode-block .frame,
+.expressive-code .title,
+.expressive-code .copy,
+.expressive-code .header {
+  background: linear-gradient(180deg, #d4d0c8 0%, #a9a39a 100%);
+}
+
+.sadcode-block code,
+.expressive-code code {
+  color: #c8c8c8;
+}
+
+.sadcode-block pre[data-language="sadscript"] code,
+.sadcode-block pre[data-language="sadscript"] .code,
+.expressive-code pre[data-language="sadscript"] code,
+.expressive-code pre[data-language="sadscript"] .code {
+  color: #c8c8c8;
+}
+
+.sadcode-block .keyword,
+.sadcode-block .control,
+.sadcode-block .directive,
+.expressive-code .token.keyword,
+.expressive-code .token.control,
+.expressive-code .token.directive,
+.expressive-code .keyword,
+.expressive-code .control,
+.expressive-code .directive {
+  color: #ff69b4;
+  font-weight: 700;
+}
+
+.sadcode-block .string,
+.expressive-code .token.string,
+.expressive-code .string {
+  color: #00ff7f;
+}
+
+.sadcode-block .comment,
+.sadcode-block .sadcode-comment,
+.expressive-code .token.comment,
+.expressive-code .comment {
+  color: #666;
+  font-style: italic;
+}
+
+.sadcode-block .number,
+.sadcode-block .constant,
+.expressive-code .token.number,
+.expressive-code .token.constant,
+.expressive-code .number,
+.expressive-code .constant {
+  color: #ff6347;
+}
+
+.sadcode-block .type,
+.sadcode-block .storage,
+.sadcode-block .sadcode-type,
+.sadcode-block .sadcode-keyword,
+.sadcode-block .sadcode-number,
+.sadcode-block .sadcode-string,
+.expressive-code .token.type,
+.expressive-code .token.storage,
+.expressive-code .type,
+.expressive-code .storage {
+  color: #8a2be2;
+}
+
+.sadcode-block .line,
+.expressive-code .line {
+  line-height: 1.5;
+}

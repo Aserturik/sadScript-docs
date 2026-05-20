@@ -1,0 +1,62 @@
+---
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+
+function escapeHtml(input: string): string {
+  return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function highlight(raw: string): string {
+  const keywords = [
+    'si_duele', 'si_no_duele', 'si_no_duele_pero', 'mientras_duela',
+    'para_que_duela', 'aunque_no_quiera', 'cortarme', 'seguir_fingiendo',
+    'ritual', 'regresar_a_llorar', 'confesar', 'intentar_sentir',
+    'romperse', 'colapsar', 'afirmar', 'segun_mi_animo', 'caso',
+    'por_defecto_mio', 'sum', 'prod', 'max', 'min', 'prom',
+    'vivo', 'muerto', 'nulo'
+  ];
+  const types = ['dolor', 'vacio', 'esperanza', 'recuerdo', 'cicatriz', 'trauma'];
+
+  const placeholders: string[] = [];
+  const stash = (html: string) => {
+    const token = `__SAD_TOKEN_${placeholders.length}__`;
+    placeholders.push(html);
+    return token;
+  };
+
+  let result = escapeHtml(raw)
+    .replace(/("([^"\\]|\\.)*")/g, (match) => stash(`<span class="string">${match}</span>`))
+    .replace(/(\/\/.*)/g, (match) => stash(`<span class="comment">${match}</span>`));
+
+  result = result.replace(/\b(\d+\.?\d*(?:e\d+)?)\b/g, '<span class="number">$1</span>');
+
+  for (const kw of keywords) {
+    result = result.replace(new RegExp(`\\b(${kw})\\b`, 'g'), '<span class="keyword">$1</span>');
+  }
+
+  for (const t of types) {
+    result = result.replace(new RegExp(`\\b(${t})\\b`, 'g'), '<span class="type">$1</span>');
+  }
+
+  placeholders.forEach((html, index) => {
+    result = result.replace(`__SAD_TOKEN_${index}__`, html);
+  });
+
+  return result;
+}
+---
+
+<div class="sadcode-block">
+  <div class="sadcode-frame">
+    <div class="sadcode-toolbar">
+      <span class="sadcode-dot red"></span>
+      <span class="sadcode-dot yellow"></span>
+      <span class="sadcode-dot green"></span>
+      <span class="sadcode-title">sadscript.exe</span>
+    </div>
+    <pre class="sadcode-body"><code set:html={highlight(code)} /></pre>
+  </div>
+</div>

@@ -8,6 +8,7 @@ export default defineConfig({
 		starlight({
 			title: 'SadScript',
 			description: 'Lenguaje de programación temático emo con sintaxis en español',
+			customCss: ['./src/styles/starlight.css'],
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/tu-usuario/sadScript' },
 			],

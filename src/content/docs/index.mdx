@@ -33,62 +33,84 @@ import i206672267 from "../../assets/i206672267_36977_2.jpg";
   <p class="gallery-title">~ la galería del dolor ~</p>
   <p class="gallery-subtitle">pasá el mouse por encima. si te animás.</p>
 
-  <div class="carousel">
+  <div class="grid top">
     <GalleryCard
-      image={emo2.src}
-      alt="emo vibes"
-      label="nadie me entiende"
-      quote="~ cuando compilás y funciona pero igual estás solo ~"
-      code={`// nadie me entiende
+          image={emo2.src}
+          alt="emo vibes"
+          label="nadie me entiende"
+          title="Component Card // 01"
+          subtitle="estado: compilando sentimientos"
+          status="window: sadness.exe"
+          chips={["lexer", "parser", "emo"]}
+          quote="~ cuando compilás y funciona pero igual estás solo ~"
+          code={`// nadie me entiende
 dolor edad = 20;
 recuerdo msg = "nadie me entiende";
 
 si_duele (edad > 18) {
-    confesar("ya soy adulto... qué triste");
+confesar("ya soy adulto... qué triste");
 }`}
-    />
+/>
 
     <GalleryCard
-      image={c43r700.src}
-      alt="dark aesthetic"
-      label="ciclo sin fin"
-      quote="~ un while que nunca termina, como mi tristeza ~"
-      code={`// ciclo sin fin
+          image={c43r700.src}
+          alt="dark aesthetic"
+          label="ciclo sin fin"
+          title="Component Card // 02"
+          subtitle="estado: loop existencial"
+          status="window: endless_loop"
+          chips={["while", "break", "legacy"]}
+          quote="~ un while que nunca termina, como mi tristeza ~"
+          code={`// ciclo sin fin
+
 esperanza seguir_vivo = vivo;
 
 mientras_duela (seguir_vivo) {
-    confesar("todavía respiro");
-    cortarme;  // break
+confesar("todavía respiro");
+cortarme; // break
 }`}
-    />
+/>
 
+  </div>
+
+  <div class="grid bottom">
     <GalleryCard
-      image={skrill.src}
-      alt="skrill emo"
-      label="funciones que gritan"
-      quote="~ cada función es un ritual ~"
-      code={`// funciones que gritan
+          image={skrill.src}
+          alt="skrill emo"
+          label="funciones que gritan"
+          title="Component Card // 03"
+          subtitle="estado: función ritual"
+          status="window: ritual.dll"
+          chips={["function", "return", "runtime"]}
+          quote="~ cada función es un ritual ~"
+          code={`// funciones que gritan
 ritual llorar() : vacio {
     confesar("hola mundo");
     regresar_a_llorar 0.0;
 }
 
 ritual gritar(dolor intensidad) {
-    confesar("AHH");
+confesar("AHH");
 }`}
-    />
+/>
 
     <GalleryCard
-      image={i206672267.src}
-      alt="emo aesthetic"
-      label="mis cicatrices"
-      quote="~ las cicatrices son vectores, los traumas son matrices ~"
-      code={`// mis cicatrices
+          image={i206672267.src}
+          alt="emo aesthetic"
+          label="mis cicatrices"
+          title="Component Card // 04"
+          subtitle="estado: memoria fragmentada"
+          status="window: trauma.sys"
+          chips={["arrays", "matrices", "types"]}
+          quote="~ las cicatrices son vectores, los traumas son matrices ~"
+          code={`// mis cicatrices
+
 cicatriz recuerdos = [1, 2, 3, 4];
 trauma sombras = [[1.2, 3.4], [5.6, 7.8]];
 
-confesar(sum(recuerdos));  // → 10
-confesar(sombras[0][1]);   // → 3.4`}
-    />
+confesar(sum(recuerdos)); // → 10
+confesar(sombras[0][1]); // → 3.4`}
+/>
+
   </div>
-</EmoGallery>
+  </EmoGallery>
